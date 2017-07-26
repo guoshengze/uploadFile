@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <script>
+		document.body.innerText=document.body.textContent=decodeURIComponent(window.location.search.slice(1));
+	</script>
+</body>
+<script type="text/javascript">
+
+	var result = decodeURIComponent(window.location.search.slice(1)),
+		arr = result.split('&'),
+		obj = {},
+		cacheObj = window.parent.uploadFileGlobalParam.cbGroup; 
+
+	for(var i = 0; i < arr.length; i++){
+		obj[arr[i].split('=')[0]] = arr[i].split('=')[1];
+	}
+
+	obj.done && cacheObj[obj.done] ? cacheObj[obj.done].fn(cacheObj[obj.done].dom,obj) : "";
+</script>
+</html>
